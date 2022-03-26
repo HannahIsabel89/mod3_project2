@@ -7,7 +7,7 @@ def clear
 end
 
 def line_break
-    puts = = = = = = = = = = = = = = = = = = = = =
+    puts "= = = = = = = = = = = = = = = = = = = = ="
 end
 
 def main_menu

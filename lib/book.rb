@@ -13,6 +13,10 @@ class Book
         @@all
     end
 
+    def self.print_top_ten # list the books in a menu
+        all.each.with_index(1) {|book, i| puts "#{i}. #{book.title}"}
+    end
+
     def print_book_details
         puts "#{title} - #{price}"
         line_break
