@@ -20,6 +20,14 @@ class Book
     def print_book_details
         puts "#{title} - #{price}"
         line_break
+        puts "Written by: #{author}"
         puts "Date published: #{pub_date}"
+    end
+
+    def book_blurb
+        puts "About the chosen book - #{title}"
+        line_break
+        new_line
+        puts "#{blurb}"
     end
 end

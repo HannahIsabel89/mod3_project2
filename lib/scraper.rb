@@ -17,16 +17,17 @@ class Scraper
             url = category.css('a')
             url = url.attr("href").value
             url = url.include?("https") ? url : "#{BASE_URL}#{url}"
-            book = Book.new({title: title, author: author, url: url, price: nil, pub_date: nil})
-            #self.book_details(url)
+            book = Book.new({title: title, author: author, url: url, price: nil, pub_date: nil, blurb: nil})
         end
     end
 
-    def book_details(url)
-        doc = get_page(url)
+    def self.book_details(url)
+        #p self
+        doc = Nokogiri::HTML(open(url))
         element = doc.css('.product-details-summary')
         price = element.css('.product-ecommerce-buy-price').text.strip.split[0].downcase
         pub_date = element.css('.product-details-publication-date').text.strip 
-        {price: price, pub_date: pub_date}
+        blurb = element.css('#p_lt_ctl01_pageplaceholder_p_lt_ctl00_DymocksProductFull_ProductDetailsDescription').text.strip
+        {price: price, pub_date: pub_date, blurb: blurb}
     end
 end
