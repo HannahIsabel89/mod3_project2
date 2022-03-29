@@ -27,7 +27,7 @@ class Scraper
         element = doc.css('.product-details-summary')
         price = element.css('.product-ecommerce-buy-price').text.strip.split[0].downcase
         pub_date = element.css('.product-details-publication-date').text.strip 
-        blurb = element.css('#p_lt_ctl01_pageplaceholder_p_lt_ctl00_DymocksProductFull_ProductDetailsDescription').text.strip
+        blurb = element.css('#p_lt_ctl01_pageplaceholder_p_lt_ctl00_DymocksProductFull_ProductDetailsDescription').text
         {price: price, pub_date: pub_date, blurb: blurb}
     end
 end

@@ -4,6 +4,7 @@ class CLI
     def initialize # get the list of categories from webpage 
         system("clear")
         loading_message
+        sleep(3)
         Scraper.new.get_best_sellers
     end
 
