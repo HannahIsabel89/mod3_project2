@@ -6,6 +6,7 @@ class CLI
         loading_message
         sleep(3)
         Scraper.new.get_best_sellers
+        @user = User.new
     end
 
     def loading_message #message while the user is waiting for the app to load
@@ -57,10 +58,15 @@ class CLI
             clear
             selected_book.book_blurb 
             new_line
+            puts "Do you want to save this book for later?"
+            puts "[Y]es to save"
+            response_3 = gets.strip
+            new_line
+            save_book(selected_book, response_3)
             puts "In 10 seconds you will be redirected to the main menu."
+            @user.print_saved_books
             sleep(10)
             start
-
         else 
             clear
             puts "You will now be taken back to the main menu."
@@ -68,4 +74,13 @@ class CLI
             start         
         end
     end
+
+    def save_book(selected_book, response_3)
+        if response_3.downcase == "y"
+            clear
+            @user.set_fave_books(selected_book)
+        end
+    end
+            
+
 end
